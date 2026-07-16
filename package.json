@@ -7,17 +7,20 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present",
-    "format": "prettier --write package.json tsconfig.base.json packages .github CONTRIBUTING.md README.md",
-    "format:check": "prettier --check package.json tsconfig.base.json packages .github CONTRIBUTING.md README.md",
-    "check": "npm run format:check && npm run typecheck && npm test"
+    "build": "npm run build --workspace @autoqa/domain && npm run build --workspace @autoqa/contracts && npm run build --workspace @autoqa/api",
+    "typecheck": "npm run typecheck --workspace @autoqa/domain && npm run typecheck --workspace @autoqa/contracts && npm run typecheck --workspace @autoqa/api",
+    "test": "npm run test --workspace @autoqa/domain && npm run test --workspace @autoqa/contracts && npm run test --workspace @autoqa/api",
+    "format": "prettier --write package.json tsconfig.base.json apps packages .github CONTRIBUTING.md README.md",
+    "format:check": "prettier --check package.json tsconfig.base.json apps packages .github CONTRIBUTING.md README.md",
+    "audit": "npm audit --audit-level=high",
+    "check": "npm run format:check && npm run build && npm run typecheck && npm test"
   },
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "devDependencies": {
+    "@types/node": "^24.13.3",
     "prettier": "3.6.2",
     "typescript": "5.8.3"
   }
