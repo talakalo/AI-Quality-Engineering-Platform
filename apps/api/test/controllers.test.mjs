@@ -3,12 +3,39 @@ import test from "node:test";
 
 import { ContractsController } from "../dist/contracts.controller.js";
 import { HealthController } from "../dist/health.controller.js";
+import { ProjectsController } from "../dist/projects.controller.js";
+import { ProjectsService } from "../dist/projects.service.js";
 
 test("health controller reports service readiness", () => {
   assert.deepEqual(new HealthController().getHealth(), {
     status: "ok",
     service: "autoqa-api",
   });
+});
+
+test("projects are created and isolated by organization", () => {
+  const service = new ProjectsService();
+  const controller = new ProjectsController(service);
+  const project = controller.create("org-1", { name: "Checkout Quality" });
+
+  assert.equal(project.organizationId, "org-1");
+  assert.deepEqual(controller.list("org-1"), [project]);
+  assert.deepEqual(controller.list("org-2"), []);
+  assert.throws(() => controller.get(project.id, "org-2"), /Not Found/);
+});
+
+test("project creation validates tenant, name, and uniqueness", () => {
+  const controller = new ProjectsController(new ProjectsService());
+  assert.throws(
+    () => controller.create(undefined, { name: "Valid" }),
+    /Bad Request/,
+  );
+  assert.throws(() => controller.create("org-1", { name: " " }), /Bad Request/);
+  controller.create("org-1", { name: "Checkout" });
+  assert.throws(
+    () => controller.create("org-1", { name: "checkout" }),
+    /Conflict/,
+  );
 });
 
 test("contract controller accepts a canonical domain event", () => {

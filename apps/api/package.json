@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@autoqa/contracts": "0.1.0",
+    "@autoqa/domain": "0.1.0",
     "@nestjs/common": "11.1.28",
     "@nestjs/core": "11.1.28",
     "@nestjs/platform-fastify": "11.1.28",
