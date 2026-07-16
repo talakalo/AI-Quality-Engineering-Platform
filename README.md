@@ -31,4 +31,3 @@ Ingest → Normalize → Discover → Analyze → Extract Requirements
 ## Governance
 
 All documents are Draft until explicitly approved. Documentation approval does not authorize implementation. Product code will begin only after Foundation, scope, architecture, security, test strategy and Definition of Done gates are approved.
-
