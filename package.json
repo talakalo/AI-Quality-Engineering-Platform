@@ -7,9 +7,9 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "npm run build --workspace @autoqa/domain",
-    "typecheck": "npm run typecheck --workspace @autoqa/domain",
-    "test": "npm run test --workspace @autoqa/domain",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
     "format": "prettier --write package.json tsconfig.base.json packages .github CONTRIBUTING.md README.md",
     "format:check": "prettier --check package.json tsconfig.base.json packages .github CONTRIBUTING.md README.md",
     "check": "npm run format:check && npm run typecheck && npm test"

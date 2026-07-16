@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://autoqa.dev/schemas/capability-contract.schema.json",
+  "title": "Capability Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "outcome",
+    "domain",
+    "lifecycle",
+    "maturity",
+    "scope",
+    "dependsOn",
+    "consumes",
+    "produces",
+    "owner",
+    "requiredEvidence"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^CAP-[0-9]+$" },
+    "name": { "type": "string", "minLength": 1 },
+    "outcome": { "type": "string", "minLength": 1 },
+    "domain": { "type": "string", "minLength": 1 },
+    "lifecycle": {
+      "enum": [
+        "proposed",
+        "approved",
+        "planned",
+        "in_development",
+        "validated",
+        "released",
+        "deprecated",
+        "rejected"
+      ]
+    },
+    "maturity": {
+      "enum": [
+        "research",
+        "prototype",
+        "experimental",
+        "alpha",
+        "beta",
+        "ga",
+        "deprecated"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "mvp_alpha",
+        "mvp_support",
+        "research_prototype",
+        "post_mvp",
+        "future_excluded"
+      ]
+    },
+    "dependsOn": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^CAP-[0-9]+$" }
+    },
+    "consumes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "produces": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "owner": { "type": "string", "minLength": 1 },
+    "requiredEvidence": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
