@@ -15,9 +15,11 @@
     "check": "npm run format:check && npm run typecheck && npm test"
   },
   "workspaces": [
+    "apps/*",
     "packages/*"
   ],
   "devDependencies": {
+    "@types/node": "^24.13.3",
     "prettier": "3.6.2",
     "typescript": "5.8.3"
   }

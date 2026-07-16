@@ -5,7 +5,7 @@
 | ADR | Topic | Status | Decision drivers |
 |---|---|---|---|
 | ADR-001 | Modular monolith vs services | Proposed | isolation, operability, scale, team size |
-| ADR-002 | Backend: FastAPI vs NestJS/TypeScript | Proposed | AI workload, Playwright integration, type safety, operations |
+| ADR-002 | Backend: FastAPI vs NestJS/TypeScript | Accepted — NestJS for MVP | AI workload, Playwright integration, type safety, operations |
 | ADR-003 | Playwright vs Cypress | Proposed | browser/API capability, parallelism, ecosystem, maintainability |
 | ADR-004 | PostgreSQL system of record | Proposed | consistency, tenancy, queries, migrations |
 | ADR-005 | Durable workflow technology | Proposed | resume, cancellation, visibility, cost |
@@ -34,4 +34,3 @@ Scores use 1–5 and require cited spike evidence. Weighted result informs the d
 ## Required backend spike evidence
 
 Equivalent workflow in each option; model streaming/tool calls; durable job handoff; Playwright worker integration; validation/OpenAPI; tracing; cancellation; cold start; throughput; memory; packaging; security maintenance; developer experience and CI duration.
-

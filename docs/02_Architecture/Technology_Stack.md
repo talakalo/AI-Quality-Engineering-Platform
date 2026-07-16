@@ -8,7 +8,7 @@
 |---|---|---|
 | Frontend | Next.js + TypeScript | full-stack web ecosystem and typed UI |
 | UI | Tailwind CSS + shadcn/ui | accessible primitives and fast consistency |
-| Backend | Next.js server/API modules initially | lower operational complexity for MVP |
+| Backend | NestJS + Fastify adapter | TypeScript control plane, direct contract reuse and Playwright ecosystem alignment |
 | Database | PostgreSQL | transactional source of truth and JSON support |
 | ORM | Drizzle ORM | typed schema and explicit SQL-friendly migrations |
 | Queue/workflows | Temporal or equivalent durable engine | resumable long-running execution |
